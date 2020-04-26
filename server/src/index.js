@@ -20,7 +20,8 @@ const organizeVideos = items => items.map( ({snippet}) => {
         publishedAt: snippet.publishedAt,
         title: snippet.title,
         description: snippet.description,
-        thumbnails: snippet.thumbnails
+        thumbnails: snippet.thumbnails,
+        videoId: snippet.resourceId.videoId
     }
 })
 
