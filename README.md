@@ -19,11 +19,21 @@
 * [] Deploy
 
 ### Frontend
-* [] Estrutura de Pastas
-* [] Arquivos básicos (html, css, js)
-* [] Sections: Header /  Search / Videos
-* [] Estilização
-* [] Puxar dados da API
-* [] Organização e apresentação dos dados no HTML
-* [] Filtro de pesquisa / Keyup Event
-* [] Filtrar dados
+* [x] Estrutura de Pastas
+* [x] Arquivos básicos (html, css, js)
+* [x] Sections: Header /  Search / Videos
+* [x] Estilização
+* [x] Puxar dados da API
+* [x] Organização e apresentação dos dados no HTML
+* [x] Filtro de pesquisa / Keyup Event
+* [x] Filtrar dados
+* [] Deploy
+
+
+
+### TODO
+
+* [] Deploys
+* [] expiração de cache para pegar os conteúdos novos.
+* [] mostrar a live atual na página (ver se tem isso na api do google)
+* [] loader na página (com css, javascript puro)
