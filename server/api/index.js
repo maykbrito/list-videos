@@ -1,17 +1,6 @@
-require('dotenv').config()
-
-const express = require('express');
-const cors = require('cors');
 const axios = require('axios');
 
-const { GOOGLE_KEY } = process.env
-
-
-const app = express();
-
-app.use(cors())
-app.use(express.json());
-
+const GOOGLE_KEY = process.env.GOOGLE_KEY
 
 let cache,
     url = `https://www.googleapis.com/youtube/v3/playlistItems?maxResults=50&part=snippet&playlistId=PLeLKux5eT3kaXJ4p_P96I9lr7qEpnbWTY&key=${GOOGLE_KEY}`
@@ -29,8 +18,8 @@ const organizeVideos = items => items.map( ({snippet}) => {
     }
 })
 
-app.get('/videos', async (req, res) => {
-    if (cache) return res.json(cache)
+module.exports = async (req, res) => {
+    if (cache) res.json(cache)
 
     try {
         let data = await getVideos(),
@@ -42,24 +31,9 @@ app.get('/videos', async (req, res) => {
         }
 
         cache = videos
-        return res.json(videos)
+
+        res.json(videos)
     } catch (error) {
-        throw new Error(error)
+        res.send("ERROR")
     }
-})
-
-const notFound = (req, res, next) => {
-    res.status(404)
-    const error = new Error('NOT_FOUND')
-    next(error)
 }
-
-const errorHandler = (error, req, res, next) => {
-    res.status(res.statusCode || 500)
-    res.json({ message: error.message })
-}
-
-app.use(notFound)
-app.use(errorHandler)
-
-app.listen(3333, () => console.log('Server is running'));
